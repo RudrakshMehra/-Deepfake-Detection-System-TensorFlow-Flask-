@@ -1,7 +1,7 @@
 
 # 🧠 Deepfake Detection System
 
-A Flask-based web application that uses a Convolutional Neural Network (CNN) to classify facial images as either **Real** or **Fake** (deepfake). Built using TensorFlow and OpenCV, the model was trained on a dataset of real and fake faces (~250MB in size) and deployed via a lightweight REST API.
+A Flask-based web application that uses a Convolutional Neural Network (CNN) to classify facial images as either **Real** or **Fake** (deepfake). Built using TensorFlow and OpenCV, the model was trained on a dataset of real and fake faces (~980MB) and deployed via a lightweight REST API.
 
 ---
 
@@ -41,8 +41,9 @@ deepfake-detector/
 ├── model.py                # CNN training script
 ├── prep-processing.py      # Data preprocessing script
 ├── final_model.keras       # Trained model
-├── dataset/                # Preprocessed .npy files
-├── Dataset/                # Raw images (real/ & fake/)
+├── download_dataset.py     # Google Drive auto-download script
+├── dataset/                # Preprocessed .npy files (after extraction)
+├── Dataset/                # Raw images (if using original data)
 ├── templates/              # index.html (upload form)
 ├── static/                 # Uploaded images
 ├── requirements.txt
@@ -51,16 +52,41 @@ deepfake-detector/
 
 ---
 
-## 📦 Installation & Usage
+## 📥 Dataset Setup
 
+This project uses a preprocessed `.npy` dataset (~980MB), hosted on Google Drive.
+
+### ✅ Prerequisites:
+- Python 3.x
+- `gdown` (installed via requirements)
+
+### 📦 Step 1: Install Requirements
 ```bash
-git clone https://github.com/yourusername/deepfake-detector.git
-cd deepfake-detector
 pip install -r requirements.txt
-python app.py
 ```
 
-Visit `http://127.0.0.1:5000` in your browser to test the web app.
+Make sure your `requirements.txt` includes:
+```
+gdown
+```
+
+### 🚀 Step 2: Run the Download Script
+```bash
+python download_dataset.py
+```
+
+This will:
+- Download `dataset.zip` (~980MB) from Google Drive
+- Unzip it into your project root as:
+```
+./dataset/
+├── X_train.npy
+├── X_test.npy
+├── y_train.npy
+└── y_test.npy
+```
+
+✅ Your training code will work out-of-the-box with this structure.
 
 ---
 
@@ -80,15 +106,15 @@ Visit `http://127.0.0.1:5000` in your browser to test the web app.
 
 ## 📊 Future Improvements
 
-- Improve accuracy using a larger dataset
+- Improve accuracy using transfer learning (e.g., MobileNetV2)
 - Deploy on Render/Heroku for public access
 - Add face detection and cropping before classification
-- Add deepfake video detection
+- Add confidence score to the response
 
 ---
 
 ## 👨‍💻 Author
 
 Rudraksh Mehra  
-📧 mehrarudraksh29070@gmail.com 
+📧 your-email@example.com  
 🔗 [LinkedIn](https://linkedin.com/in/yourprofile) | [GitHub](https://github.com/yourusername)
