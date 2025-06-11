@@ -39,56 +39,39 @@ deepfake-detector/
 │
 ├── app.py                  # Flask backend + REST API
 ├── model.py                # CNN training script
-├── prep-processing.py      # Data preprocessing script
-├── final_model.keras       # Trained model
-├── download_dataset.py     # Google Drive auto-download script
-├── dataset/                # Preprocessed .npy files (after extraction)
-├── Dataset/                # Raw images (if using original data)
-├── templates/              # index.html (upload form)
-├── static/                 # Uploaded images
-├── requirements.txt
-└── README.md
+├── prep-processing.py      # Converts raw images to .npy arrays
+├── final_model.keras       # Trained Keras model
+├── download_dataset.py     # Downloads Dataset/ from Google Drive (raw images)
+├── Dataset/                # Raw images (real/ and fake/), extracted from ZIP
+├── dataset/                # Preprocessed .npy files (created by prep-processing.py)
+├── templates/              # index.html for image upload form
+├── static/                 # Uploaded images shown on result page
+├── requirements.txt        # Required Python packages
+└── README.md               # Project documentation
+
 ```
 
 ---
 
 ## 📥 Dataset Setup
 
-This project uses a preprocessed `.npy` dataset (~980MB), hosted on Google Drive.
+This project uses a dataset (~980MB) hosted on Google Drive.  
+The ZIP file contains:
+- `Dataset/` folder with raw images (`real/` and `fake/`)
+- `dataset/` folder with preprocessed NumPy arrays (`.npy` files)
+
+---
 
 ### ✅ Prerequisites:
 - Python 3.x
 - `gdown` (installed via requirements)
 
+---
+
 ### 📦 Step 1: Install Requirements
 ```bash
 pip install -r requirements.txt
 ```
-
-Make sure your `requirements.txt` includes:
-```
-gdown
-```
-
-### 🚀 Step 2: Run the Download Script
-```bash
-python download_dataset.py
-```
-
-This will:
-- Download `dataset.zip` (~980MB) from Google Drive
-- Unzip it into your project root as:
-```
-./dataset/
-├── X_train.npy
-├── X_test.npy
-├── y_train.npy
-└── y_test.npy
-```
-
-✅ Your training code will work out-of-the-box with this structure.
-
----
 
 ## 🔗 API Usage
 
@@ -116,5 +99,5 @@ This will:
 ## 👨‍💻 Author
 
 Rudraksh Mehra  
-📧 your-email@example.com  
-🔗 [LinkedIn](https://linkedin.com/in/yourprofile) | [GitHub](https://github.com/yourusername)
+📧 mehrarudraksh29070@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/rudraksh-mehra-2025282b2/) | [GitHub](https://github.com/RudrakshMehra)
