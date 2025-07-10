@@ -65,6 +65,7 @@ The ZIP file contains:
 ### ✅ Prerequisites:
 - Python 3.x
 - `gdown` (installed via requirements)
+- Download the mode from link - https://drive.google.com/file/d/12tI4jeMmlaGVXQvPFvu93UBuER1SILFU/view?usp=drive_link
 
 ---
 
